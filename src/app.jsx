@@ -1,7 +1,21 @@
-import "./app.css";
+import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Detail from './routes/detail';
+import Home from './routes/home';
 
-function App() {
-  return <h1>Hello World!</h1>;
-}
+const App = ({movieAPI}) => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path='/movie'>
+          <Detail />
+        </Route>
+        <Route path='/'>
+          <Home movieAPI={movieAPI} />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
 export default App;
