@@ -1,19 +1,15 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Detail from './routes/detail';
 import Home from './routes/home';
 
 const App = ({movieAPI}) => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path='/movie'>
-          <Detail />
-        </Route>
-        <Route path='/'>
-          <Home movieAPI={movieAPI} />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path='/movie' element={<Detail />} />
+        <Route path='/' element={<Home movieAPI={movieAPI} />} />
+      </Routes>
     </BrowserRouter>
   );
 };
