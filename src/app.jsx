@@ -1,7 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Detail from './routes/detail';
-import Home from './routes/home';
+import Home from './routes/home/home';
+import './app.css';
 
 const App = ({movieAPI}) => {
   return (

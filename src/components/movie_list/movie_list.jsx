@@ -1,16 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import styles from './movie_list.module.css';
+import styles from '../movie_list/movie_list.module.css';
 
-const MovieList = ({id, title, cover, year, runtime, genres}) => {
+const MovieList = ({id, title, cover}) => {
   return (
-    <li>
-      <img src={cover} alt='thumbnail' />
+    <li className={styles.movielist}>
       <Link to={`/movie/${id}`}>
-        <h2>
-          {title} ({year})
-        </h2>
-        <p>→View More...</p>
+        <img src={cover} alt='thumbnail' className={styles.cover} />
+        <h3 className={styles.movieTitle}>
+          {title.length < 21 ? title : `${title.substring(0, 21)}...`}
+        </h3>
       </Link>
     </li>
   );

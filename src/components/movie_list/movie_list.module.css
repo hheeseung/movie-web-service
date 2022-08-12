@@ -1,0 +1,20 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.movielist {
+  width: 250px;
+  padding: 0 10px;
+  margin-right: 15px;
+  margin-bottom: 50px;
+}
+
+.cover {
+  display: block;
+  margin: auto;
+}
+
+.movieTitle {
+  font-size: 17px;
+}
