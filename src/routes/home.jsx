@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Movie from '../components/movie';
+import MovieList from '../components/movie_list/movie_list';
 
 const Home = ({movieAPI}) => {
   const [movies, setMovies] = useState([]);
@@ -13,13 +13,12 @@ const Home = ({movieAPI}) => {
   return (
     <ul>
       {movies.map((movie) => (
-        <Movie
+        <MovieList
           key={movie.id}
+          id={movie.id}
           title={movie.title}
           cover={movie.medium_cover_image}
           year={movie.year}
-          runtime={movie.runtime}
-          genres={movie.genres.map((genre) => `${genre} `)}
         />
       ))}
     </ul>

@@ -7,7 +7,7 @@ const App = ({movieAPI}) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/movie' element={<Detail />} />
+        <Route path='/movie/:id' element={<Detail movieAPI={movieAPI} />} />
         <Route path='/' element={<Home movieAPI={movieAPI} />} />
       </Routes>
     </BrowserRouter>
