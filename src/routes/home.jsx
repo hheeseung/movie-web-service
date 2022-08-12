@@ -22,7 +22,7 @@ const Home = ({movieAPI}) => {
         <div className={styles.load}>Loading...</div>
       ) : (
         <>
-          (<Header />
+          <Header />
           <ul className={styles.contents}>
             {movies.map((movie) => (
               <MovieList
@@ -33,7 +33,6 @@ const Home = ({movieAPI}) => {
               />
             ))}
           </ul>
-          )
         </>
       )}
     </>

@@ -20,10 +20,28 @@
   display: inline-block;
   margin-right: 10px;
   border: 1px solid #262223;
-  padding: 5px;
+  padding: 8px;
   border-radius: 20px;
+  transition: all 0.2s ease-in;
+}
+
+.genre:hover {
+  background-color: #262223;
+  color: #ddc6b6;
+  cursor: default;
 }
 
 .description {
   line-height: 1.5em;
+}
+
+.back {
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
 }
