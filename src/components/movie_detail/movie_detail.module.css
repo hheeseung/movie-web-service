@@ -59,6 +59,7 @@
 
   .metadata {
     flex-direction: column;
+    padding: 0;
   }
 
   .thumbnail {
