@@ -37,6 +37,10 @@
   cursor: default;
 }
 
+.synopsis {
+  padding: 15px;
+}
+
 .description {
   line-height: 1.5em;
 }
@@ -79,5 +83,9 @@
   .genre {
     margin-right: 3px;
     padding: 5px;
+  }
+
+  .synopsis {
+    padding: 0;
   }
 }

@@ -36,8 +36,10 @@ const MovieDetail = ({
               ))}
           </div>
         </div>
-        <h3>Synopsis</h3>
-        <p className={styles.description}>{description}</p>
+        <div className={styles.synopsis}>
+          <h3>Synopsis</h3>
+          <p className={styles.description}>{description}</p>
+        </div>
       </main>
       <Link to='/'>
         <button className={styles.back}>
