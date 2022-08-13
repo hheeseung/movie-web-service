@@ -17,7 +17,7 @@ const MovieDetail = ({
         <div className={styles.metadata}>
           <img src={thumbnail} alt='thumbnail' className={styles.thumbnail} />
           <div className={styles.movieInfo}>
-            <h1>{title}</h1>
+            <h1 className={styles.title}>{title}</h1>
             <p className={styles.rating}>
               <i className='fa-solid fa-star'></i> {rating} / 10
             </p>
