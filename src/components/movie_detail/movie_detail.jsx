@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import styles from '../movie_detail/movie_detail.module.css';
 
 const MovieDetail = ({
@@ -11,6 +11,7 @@ const MovieDetail = ({
   likes,
   description,
 }) => {
+  const navigate = useNavigate();
   return (
     <>
       <main className={styles.contents}>
@@ -41,12 +42,10 @@ const MovieDetail = ({
           <p className={styles.description}>{description}</p>
         </div>
       </main>
-      <Link to='/'>
-        <button className={styles.back}>
-          <i className='fa-solid fa-arrow-left-long'></i>
-          &nbsp;back
-        </button>
-      </Link>
+      <button className={styles.back} onClick={() => navigate(-1)}>
+        <i className='fa-solid fa-arrow-left-long'></i>
+        &nbsp;back
+      </button>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import Loader from '../components/loader/loader';
 import MovieDetail from '../components/movie_detail/movie_detail';
-import styles from './route.module.css';
 
 const Detail = ({movieAPI}) => {
   const {id} = useParams();
@@ -20,7 +20,7 @@ const Detail = ({movieAPI}) => {
   return (
     <>
       {loading ? (
-        <div className={styles.load}>Loading...</div>
+        <Loader />
       ) : (
         <MovieDetail
           title={movie.title_long}
