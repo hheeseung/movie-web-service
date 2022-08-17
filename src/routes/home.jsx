@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
 import Loader from '../components/loader/loader';
 import MovieList from '../components/movie_list/movie_list';
@@ -34,6 +35,7 @@ const Home = ({movieAPI}) => {
               />
             ))}
           </ul>
+          <Footer />
         </>
       )}
     </>
