@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import Footer from '../components/footer/footer';
-import Header from '../components/header/header';
 import Loader from '../components/loader/loader';
 import MovieDetail from '../components/movie_detail/movie_detail';
 
@@ -25,7 +23,8 @@ const Detail = ({movieAPI}) => {
         <Loader />
       ) : (
         <>
-          <Header />
+          <br />
+          <br />
           <MovieDetail
             title={movie.title_long}
             thumbnail={movie.medium_cover_image}
@@ -35,7 +34,6 @@ const Detail = ({movieAPI}) => {
             likes={movie.like_count}
             description={movie.description_full}
           />
-          <Footer />
         </>
       )}
     </>

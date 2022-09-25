@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './header.module.css';
 
-const Header = () => {
+const Header = ({title}) => {
   return (
     <header className={styles.header}>
-      <h1 className={styles.header__title}>
-        <i className='fa-solid fa-clapperboard' /> Movie Web Service
-      </h1>
+      <h1 className={styles.header__title}>{title}</h1>
     </header>
   );
 };

@@ -6,10 +6,10 @@ class MovieAPI {
     };
   }
 
-  async movieList() {
+  async popularMovieList() {
     try {
       const response = await fetch(
-        'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count&limit=50',
+        'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count&limit=30',
         this.getRequestOptions
       );
       const result = await response.json();
