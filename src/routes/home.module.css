@@ -1,11 +1,5 @@
-.popular__movies {
-  margin-top: 50px;
-  padding: 0 50px;
-}
-
-.title {
-  text-align: center;
-  margin-bottom: 50px;
+.movieList {
+  margin: 20px;
 }
 
 .contents {

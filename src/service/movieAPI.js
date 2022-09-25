@@ -6,14 +6,25 @@ class MovieAPI {
     };
   }
 
-  async popularMovieList() {
+  async movieList() {
     try {
-      const response = await fetch(
-        'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count&limit=30',
-        this.getRequestOptions
-      );
-      const result = await response.json();
-      return result.data.movies;
+      const [response1, response2, response3] = await Promise.all([
+        fetch(
+          'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count&limit=6',
+          this.getRequestOptions
+        ),
+        fetch(
+          'https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=6',
+          this.getRequestOptions
+        ),
+        fetch(
+          'https://yts.mx/api/v2/list_movies.json?sort_by=date_added&limit=6'
+        ),
+      ]);
+      const popular = await response1.json();
+      const highRating = await response2.json();
+      const recent = await response3.json();
+      return [popular.data.movies, highRating.data.movies, recent.data.movies];
     } catch (error) {
       return console.log('error', error);
     }

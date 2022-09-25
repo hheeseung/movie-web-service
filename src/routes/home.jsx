@@ -1,19 +1,24 @@
 import React, {useEffect, useState} from 'react';
+import Banner from '../components/banner/banner';
 import Header from '../components/header/header';
 import Loader from '../components/loader/loader';
 import MovieList from '../components/movie_list/movie_list';
 import Navigation from '../components/navbar/navigation';
-import styles from './route.module.css';
+import styles from './home.module.css';
 
 const Home = ({movieAPI}) => {
-  const [movies, setMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [highRatingMovies, setHighRatingMovies] = useState([]);
+  const [recentMovies, setRecentMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     movieAPI
-      .popularMovieList() //
+      .movieList() //
       .then((movies) => {
-        setMovies(movies);
+        setPopularMovies(movies[0]);
+        setHighRatingMovies(movies[1]);
+        setRecentMovies(movies[2]);
         setLoading(false);
       });
   }, [movieAPI]);
@@ -25,10 +30,10 @@ const Home = ({movieAPI}) => {
       ) : (
         <>
           <Navigation />
-          <div className={styles.popular__movies}>
+          <section className={styles.movieList}>
             <Header title={'Most Popular Movies'} />
             <ul className={styles.contents}>
-              {movies.map((movie) => (
+              {popularMovies.map((movie) => (
                 <MovieList
                   key={movie.id}
                   id={movie.id}
@@ -37,7 +42,33 @@ const Home = ({movieAPI}) => {
                 />
               ))}
             </ul>
-          </div>
+          </section>
+          <section className={styles.movieList}>
+            <Header title={'Highly Rated Movies'} />
+            <ul className={styles.contents}>
+              {highRatingMovies.map((movie) => (
+                <MovieList
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  cover={movie.medium_cover_image}
+                />
+              ))}
+            </ul>
+          </section>
+          <section className={styles.movieList}>
+            <Header title={'Latest Movies'} />
+            <ul className={styles.contents}>
+              {recentMovies.map((movie) => (
+                <MovieList
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  cover={movie.medium_cover_image}
+                />
+              ))}
+            </ul>
+          </section>
         </>
       )}
     </>
