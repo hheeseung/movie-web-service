@@ -30,6 +30,7 @@ const Home = ({movieAPI}) => {
       ) : (
         <>
           <Navigation />
+          <Banner />
           <section className={styles.movieList}>
             <Header title={'Most Popular Movies'} />
             <ul className={styles.contents}>
