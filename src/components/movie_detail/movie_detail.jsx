@@ -28,7 +28,7 @@ const MovieDetail = ({
             onError={handleImgError}
           />
           <div className={styles.movieInfo}>
-            <h1 className={styles.title}>{title}</h1>
+            <h2 className={styles.title}>{title}</h2>
             <p className={styles.rating}>
               <i className='fa-solid fa-star'></i> {rating} / 10
             </p>
