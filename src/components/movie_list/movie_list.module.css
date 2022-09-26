@@ -34,6 +34,6 @@ a {
 
 @media screen and (max-width: 798px) {
   .movielist {
-    margin: auto;
+    margin: 10px auto;
   }
 }
