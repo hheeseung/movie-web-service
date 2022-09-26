@@ -18,10 +18,18 @@ a {
 .cover {
   display: block;
   margin: auto;
+  box-shadow: 10px 10px 10px 0px rgba(191, 191, 191, 1);
 }
 
 .movieTitle {
-  font-size: 17px;
+  margin: 0;
+  margin-top: 20px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.movieYear {
+  margin: 5px 0;
 }
 
 @media screen and (max-width: 700px) {

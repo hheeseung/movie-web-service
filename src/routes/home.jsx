@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import Banner from '../components/banner/banner';
-import Header from '../components/header/header';
 import Loader from '../components/loader/loader';
 import MovieList from '../components/movie_list/movie_list';
 import Navigation from '../components/navbar/navigation';
@@ -32,7 +31,7 @@ const Home = ({movieAPI}) => {
           <Navigation />
           <Banner />
           <section className={styles.movieList}>
-            <Header title={'Most Popular Movies'} />
+            <h2 className={styles.title}>Most Popular Movies →</h2>
             <ul className={styles.contents}>
               {popularMovies.map((movie) => (
                 <MovieList
@@ -46,7 +45,7 @@ const Home = ({movieAPI}) => {
             </ul>
           </section>
           <section className={styles.movieList}>
-            <Header title={'Highly Rated Movies'} />
+            <h2 className={styles.title}>Highly Rated Movies →</h2>
             <ul className={styles.contents}>
               {highRatingMovies.map((movie) => (
                 <MovieList
@@ -60,7 +59,7 @@ const Home = ({movieAPI}) => {
             </ul>
           </section>
           <section className={styles.movieList}>
-            <Header title={'Latest Movies'} />
+            <h2 className={styles.title}>Latest Movies →</h2>
             <ul className={styles.contents}>
               {recentMovies.map((movie) => (
                 <MovieList
