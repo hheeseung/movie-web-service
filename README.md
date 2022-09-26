@@ -2,15 +2,18 @@
 
 ## 📝 About Project
 
-`fetch`를 통해 외부 API의 데이터를 이용해 만든 영화 조회 서비스입니다. 데이터는 YTS 사이트의 좋아요 순 상위 50개의 영화 데이터를 가져왔습니다. 홈 화면의 썸네일을 클릭하면 세부화면으로 넘어가도록 구현하였습니다. 또한 반응형을 고려하여 모바일 화면에서도 잘 구현될 수 있도록 만들었습니다.
+`fetch`를 사용하여 외부 API의 데이터를 가져와 만든 영화 정보 조회 서비스입니다. [YTS 사이트](https://yts.mx/api) API를 이용하여 영화 데이터를 수집하였습니다. `React Router`를 사용하여 화면 간 이동을 구현했고, 모바일 화면에서도 깨지지 않고 잘 보여질 수 있도록 제작하였습니다.
 
-![movie-web-service](https://user-images.githubusercontent.com/87454393/185085963-3689dc9f-5259-4d51-b4a5-eef5d02b325e.png)
-![movie-web-service-detail](https://user-images.githubusercontent.com/87454393/185085989-449c91b5-bfff-4ce9-99de-4ee2d31c8221.png)
+![Movie-Web-Service-Demo](https://user-images.githubusercontent.com/87454393/192266988-0b14a1c1-5788-4135-ad87-546065f4e6fb.gif)
 
-## 🖥 Environment
+## 🖥 Demo
 
-1. Skills: `React JS`, `React Router`, `PostCSS`
-2. Deploy: `Netlify` - [Click Here To See Demo](https://movie-web-service.netlify.app/)
+[Click Here To See Demo](https://movie-web-service.netlify.app/)
+
+## 👩‍💻 Environment
+
+1. Skills: Bootstrap, PostCSS, React JS, React Router
+2. Deploy: Netlify
 
 ## 💡 Code
 
@@ -18,72 +21,62 @@
 
 ```javascript
 class MovieAPI {
-  constructor() {
-    this.getRequestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-    };
-  }
-
-  async movieList() {
+  ...
+	async movieList() {
     try {
-      const response = await fetch(
-        'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count&limit=50',
-        this.getRequestOptions
-      );
-      const result = await response.json();
-      return result.data.movies;
+      const [response1, response2, response3] = await Promise.all([
+        fetch(
+          'https://yts.mx/api/v2/list_movies.json?&sort_by=like_count&limit=7',
+          this.getRequestOptions
+        ),
+        fetch(
+          'https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=7',
+          this.getRequestOptions
+        ),
+        fetch('https://yts.mx/api/v2/list_movies.json?sort_by=year&limit=7'),
+      ]);
+      const popular = await response1.json();
+      const highRating = await response2.json();
+      const recent = await response3.json();
+      return [popular.data.movies, highRating.data.movies, recent.data.movies];
     } catch (error) {
       return console.log('error', error);
     }
   }
-
-  async movieDetail(id) {
-    try {
-      const response = await fetch(
-        `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`,
-        this.getRequestOptions
-      );
-      const result = await response.json();
-      return result.data.movie;
-    } catch (error) {
-      return console.log('error', error);
-    }
-  }
+	...
 }
-
-export default MovieAPI;
 ```
+
+- 3가지 카테고리(인기순, 평점순, 최신순)를 나타내기 위해 `Promise.all`로 API 주소값 여러 개를 전달하였습니다.
 
 ### home.jsx
 
 ```javascript
-
 ...
-
-const [movies, setMovies] = useState([]);
+const [popularMovies, setPopularMovies] = useState([]);
+const [highRatingMovies, setHighRatingMovies] = useState([]);
+const [recentMovies, setRecentMovies] = useState([]);
 
 useEffect(() => {
-  movieAPI
-    .movieList() //
-    .then((movies) => {
-      setMovies(movies);
-      setLoading(false);
-    });
+	movieAPI
+		.movieList() //
+		.then((movies) => {
+			setPopularMovies(movies[0]);
+			setHighRatingMovies(movies[1]);
+			setRecentMovies(movies[2]);
+			setLoading(false);
+		});
 }, [movieAPI]);
-
 ...
-
 ```
 
-- React는 View에 해당하는 영역이기 때문에 데이터 통신은 파일을 따로 만들어 분리했습니다.
-- 분리한 데이터 통신 파일(movieAPI.js)의 메서드를 통해 데이터를 가져오도록 구현했습니다.
+- React는 View에 해당하는 영역이기 때문에 데이터 통신은 파일을 따로 만들어 의존성 주입을 하였습니다.
+- 카테고리에 따른 라우팅을 위해 `state`를 세가지로 나누어 데이터를 전달받도록 하였습니다.
 
 ### detail.jsx
 
 ```javascript
 ...
-
 const {id} = useParams();
 const [movie, setMovie] = useState([]);
 
@@ -95,19 +88,7 @@ useEffect(() => {
       setLoading(false);
     });
 }, [id, movieAPI]);
-
-...
-
-<MovieDetail
-  title={movie.title_long}
-  thumbnail={movie.medium_cover_image}
-  rating={movie.rating}
-  runtime={movie.runtime}
-  genres={movie.genres}
-  likes={movie.like_count}
-  description={movie.description_full}
- />
 ...
 ```
 
-- 라우팅은 `useParams`로 선택한 영화의 고유 id값을 불러와 그 id에 해당하는 데이터를 `props`로 전달하여 상세화면에서 나타나도록 구현했습니다.
+- 상세 화면으로의 이동은 `useParams`를 통해 고유 id값을 전달받아 해당 영화에 대한 정보를 받아오도록 구현하였습니다.
