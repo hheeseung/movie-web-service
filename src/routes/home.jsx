@@ -6,7 +6,7 @@ import MovieList from '../components/movie_list/movie_list';
 import Navigation from '../components/navbar/navigation';
 import styles from './home.module.css';
 
-const Home = ({movieAPI}) => {
+const Home = ({movieAPI, handleImgError}) => {
   const navigate = useNavigate();
   const [popularMovies, setPopularMovies] = useState([]);
   const [highRatingMovies, setHighRatingMovies] = useState([]);
@@ -48,6 +48,7 @@ const Home = ({movieAPI}) => {
                   cover={movie.medium_cover_image}
                   year={movie.year}
                   rating={movie.rating}
+                  handleImgError={handleImgError}
                 />
               ))}
             </ul>
@@ -68,6 +69,7 @@ const Home = ({movieAPI}) => {
                   cover={movie.medium_cover_image}
                   year={movie.year}
                   rating={movie.rating}
+                  handleImgError={handleImgError}
                 />
               ))}
             </ul>
@@ -88,6 +90,7 @@ const Home = ({movieAPI}) => {
                   cover={movie.medium_cover_image}
                   year={movie.year}
                   rating={movie.rating}
+                  handleImgError={handleImgError}
                 />
               ))}
             </ul>

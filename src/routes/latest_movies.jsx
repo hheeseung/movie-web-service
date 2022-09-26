@@ -4,7 +4,7 @@ import MovieList from '../components/movie_list/movie_list';
 import Navigation from '../components/navbar/navigation';
 import styles from './movie_lists.module.css';
 
-const LatestMovies = ({movieAPI}) => {
+const LatestMovies = ({movieAPI, handleImgError}) => {
   const [recentMovies, setRecentMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,6 +32,7 @@ const LatestMovies = ({movieAPI}) => {
                 cover={movie.medium_cover_image}
                 year={movie.year}
                 rating={movie.rating}
+                handleImgError={handleImgError}
               />
             ))}
           </ul>

@@ -2,6 +2,8 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import styles from '../movie_detail/movie_detail.module.css';
 
+const DEFAULT_COVER = '/images/no-image-available.jpg';
+
 const MovieDetail = ({
   title,
   thumbnail,
@@ -12,11 +14,18 @@ const MovieDetail = ({
   description,
 }) => {
   const navigate = useNavigate();
+  const handleImgError = (e) => (e.target.src = DEFAULT_COVER);
+
   return (
     <>
       <main className={styles.contents}>
         <div className={styles.metadata}>
-          <img src={thumbnail} alt='thumbnail' className={styles.thumbnail} />
+          <img
+            src={thumbnail}
+            alt='thumbnail'
+            className={styles.thumbnail}
+            onError={handleImgError}
+          />
           <div className={styles.movieInfo}>
             <h1 className={styles.title}>{title}</h1>
             <p className={styles.rating}>
