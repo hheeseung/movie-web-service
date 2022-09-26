@@ -23,6 +23,7 @@ const HighRatedMovies = ({movieAPI, handleImgError}) => {
       ) : (
         <>
           <Navigation />
+          <h1 className={styles.title}>The Highly Rated Movies</h1>
           <ul className={styles.list}>
             {highRatedMovies.map((movie) => (
               <MovieList
