@@ -40,6 +40,7 @@ const Home = ({movieAPI}) => {
                   id={movie.id}
                   title={movie.title}
                   cover={movie.medium_cover_image}
+                  year={movie.year}
                 />
               ))}
             </ul>
@@ -53,6 +54,7 @@ const Home = ({movieAPI}) => {
                   id={movie.id}
                   title={movie.title}
                   cover={movie.medium_cover_image}
+                  year={movie.year}
                 />
               ))}
             </ul>
@@ -66,6 +68,7 @@ const Home = ({movieAPI}) => {
                   id={movie.id}
                   title={movie.title}
                   cover={movie.medium_cover_image}
+                  year={movie.year}
                 />
               ))}
             </ul>

@@ -10,16 +10,36 @@ class MovieAPI {
     try {
       const [response1, response2, response3] = await Promise.all([
         fetch(
-          'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count&limit=6',
+          'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count&limit=7',
           this.getRequestOptions
         ),
         fetch(
-          'https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=6',
+          'https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=7',
+          this.getRequestOptions
+        ),
+        fetch('https://yts.mx/api/v2/list_movies.json?sort_by=year&limit=7'),
+      ]);
+      const popular = await response1.json();
+      const highRating = await response2.json();
+      const recent = await response3.json();
+      return [popular.data.movies, highRating.data.movies, recent.data.movies];
+    } catch (error) {
+      return console.log('error', error);
+    }
+  }
+
+  async movieListAll() {
+    try {
+      const [response1, response2, response3] = await Promise.all([
+        fetch(
+          'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count',
           this.getRequestOptions
         ),
         fetch(
-          'https://yts.mx/api/v2/list_movies.json?sort_by=date_added&limit=6'
+          'https://yts.mx/api/v2/list_movies.json?sort_by=rating',
+          this.getRequestOptions
         ),
+        fetch('https://yts.mx/api/v2/list_movies.json?sort_by=year'),
       ]);
       const popular = await response1.json();
       const highRating = await response2.json();
