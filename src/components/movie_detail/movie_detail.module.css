@@ -79,9 +79,9 @@
   font-size: 17px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 798px) {
   .contents {
-    width: 320px;
+    width: 80%;
   }
 
   .metadata {
@@ -101,10 +101,17 @@
 
   .title {
     font-size: 23px;
+    margin-top: 30px;
   }
 
   .genre {
     padding: 5px;
+  }
+
+  .casts {
+    padding: 0;
+    margin: 20px 0;
+    overflow-x: scroll;
   }
 
   .synopsis {
