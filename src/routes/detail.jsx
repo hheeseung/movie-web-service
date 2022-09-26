@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import Loader from '../components/loader/loader';
 import MovieDetail from '../components/movie_detail/movie_detail';
+import Navigation from '../components/navbar/navigation';
 
 const Detail = ({movieAPI}) => {
   const {id} = useParams();
@@ -23,8 +24,7 @@ const Detail = ({movieAPI}) => {
         <Loader />
       ) : (
         <>
-          <br />
-          <br />
+          <Navigation />
           <MovieDetail
             title={movie.title_long}
             thumbnail={movie.medium_cover_image}

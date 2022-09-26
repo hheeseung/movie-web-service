@@ -50,21 +50,31 @@ const MovieDetail = ({
         <div className={styles.casts}>
           <h3>Cast</h3>
           <div className={styles.cast}>
-            {cast.map((c) => (
-              <div className={styles.cast__info}>
-                <img
-                  src={c.url_small_image}
-                  alt='cast'
-                  className={styles.cast__image}
-                />
-                <p className={styles.cast__name}>{c.name}</p>
-              </div>
-            ))}
+            {cast
+              ? cast.map((c) => (
+                  <div key={c.name} className={styles.cast__info}>
+                    <img
+                      src={
+                        c.url_small_image
+                          ? c.url_small_image
+                          : '/images/no-image-available-cast.jpg'
+                      }
+                      alt='cast'
+                      className={styles.cast__image}
+                    />
+                    <p className={styles.cast__name}>{c.name}</p>
+                  </div>
+                ))
+              : 'No Information'}
           </div>
         </div>
         <div className={styles.synopsis}>
           <h3>Synopsis</h3>
-          <p className={styles.description}>{description}</p>
+          {description ? (
+            <p className={styles.description}>{description}</p>
+          ) : (
+            'No Information'
+          )}
         </div>
       </main>
       <button className={styles.back} onClick={() => navigate(-1)}>
