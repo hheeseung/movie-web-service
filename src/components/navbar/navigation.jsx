@@ -7,7 +7,7 @@ const Navigation = () => {
   return (
     <Navbar bg='dark' variant='dark'>
       <Container>
-        <Navbar.Brand>Movie Viewer</Navbar.Brand>
+        <Navbar.Brand onClick={() => navigate('/')}>Movie Viewer</Navbar.Brand>
         <Nav className='me-auto'>
           <Nav.Link onClick={() => navigate('/movie/popular_movies')}>
             Popular
@@ -15,7 +15,7 @@ const Navigation = () => {
           <Nav.Link onClick={() => navigate('/movie/high_rated_movies')}>
             High Rated
           </Nav.Link>
-          <Nav.Link onClick={() => navigate('/movie/latest_movioes')}>
+          <Nav.Link onClick={() => navigate('/movie/latest_movies')}>
             Latest
           </Nav.Link>
         </Nav>
