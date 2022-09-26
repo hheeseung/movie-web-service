@@ -10,7 +10,7 @@ class MovieAPI {
     try {
       const [response1, response2, response3] = await Promise.all([
         fetch(
-          'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count&limit=7',
+          'https://yts.mx/api/v2/list_movies.json?&sort_by=like_count&limit=7',
           this.getRequestOptions
         ),
         fetch(
@@ -32,7 +32,7 @@ class MovieAPI {
     try {
       const [response1, response2, response3] = await Promise.all([
         fetch(
-          'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=like_count&limit=42',
+          'https://yts.mx/api/v2/list_movies.json?&sort_by=like_count&limit=42',
           this.getRequestOptions
         ),
         fetch(

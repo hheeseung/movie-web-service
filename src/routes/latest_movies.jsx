@@ -23,7 +23,7 @@ const LatestMovies = ({movieAPI, handleImgError}) => {
       ) : (
         <>
           <Navigation />
-          <h1 className={styles.title}>The Latest Movies</h1>
+          <h1 className={styles.title}>Latest Movies</h1>
           <ul className={styles.list}>
             {recentMovies.map((movie) => (
               <MovieList

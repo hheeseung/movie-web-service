@@ -23,7 +23,7 @@ const PopularMovies = ({movieAPI, handleImgError}) => {
       ) : (
         <>
           <Navigation />
-          <h1 className={styles.title}>The Most Popular Movies</h1>
+          <h1 className={styles.title}>Most Popular Movies</h1>
           <ul className={styles.list}>
             {popularMovies.map((movie) => (
               <MovieList

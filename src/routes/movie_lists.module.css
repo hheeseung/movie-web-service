@@ -1,6 +1,9 @@
 .title {
+  width: fit-content;
   font-weight: bold;
   margin: 30px 40px;
+  border-bottom: 3px solid #000;
+  padding-bottom: 5px;
 }
 
 .list {
