@@ -7,7 +7,9 @@ const Navigation = () => {
   return (
     <Navbar bg='dark' variant='dark'>
       <Container>
-        <Navbar.Brand onClick={() => navigate('/')}>Movie Viewer</Navbar.Brand>
+        <Navbar.Brand style={{cursor: 'pointer'}} onClick={() => navigate('/')}>
+          Movie Viewer
+        </Navbar.Brand>
         <Nav className='me-auto'>
           <Nav.Link onClick={() => navigate('/movie/popular_movies')}>
             Popular
