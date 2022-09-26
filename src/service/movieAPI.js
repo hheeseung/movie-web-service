@@ -53,7 +53,7 @@ class MovieAPI {
   async movieDetail(id) {
     try {
       const response = await fetch(
-        `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`,
+        `https://yts.mx/api/v2/movie_details.json?movie_id=${id}&with_cast=true`,
         this.getRequestOptions
       );
       const result = await response.json();

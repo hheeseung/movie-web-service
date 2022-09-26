@@ -33,6 +33,7 @@ const Detail = ({movieAPI}) => {
             genres={movie.genres}
             likes={movie.like_count}
             description={movie.description_full}
+            cast={movie.cast}
           />
         </>
       )}

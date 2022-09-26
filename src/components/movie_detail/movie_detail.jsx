@@ -12,6 +12,7 @@ const MovieDetail = ({
   genres,
   likes,
   description,
+  cast,
 }) => {
   const navigate = useNavigate();
   const handleImgError = (e) => (e.target.src = DEFAULT_COVER);
@@ -44,6 +45,21 @@ const MovieDetail = ({
                   #{genre}
                 </p>
               ))}
+          </div>
+        </div>
+        <div className={styles.casts}>
+          <h3>Cast</h3>
+          <div className={styles.cast}>
+            {cast.map((c) => (
+              <div className={styles.cast__info}>
+                <img
+                  src={c.url_small_image}
+                  alt='cast'
+                  className={styles.cast__image}
+                />
+                <p className={styles.cast__name}>{c.name}</p>
+              </div>
+            ))}
           </div>
         </div>
         <div className={styles.synopsis}>
