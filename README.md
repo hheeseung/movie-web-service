@@ -22,7 +22,7 @@
 ```javascript
 class MovieAPI {
   ...
-	async movieList() {
+  async movieList() {
     try {
       const [response1, response2, response3] = await Promise.all([
         fetch(
@@ -43,7 +43,7 @@ class MovieAPI {
       return console.log('error', error);
     }
   }
-	...
+  ...
 }
 ```
 
@@ -58,14 +58,14 @@ const [highRatingMovies, setHighRatingMovies] = useState([]);
 const [recentMovies, setRecentMovies] = useState([]);
 
 useEffect(() => {
-	movieAPI
-		.movieList() //
-		.then((movies) => {
-			setPopularMovies(movies[0]);
-			setHighRatingMovies(movies[1]);
-			setRecentMovies(movies[2]);
-			setLoading(false);
-		});
+  movieAPI
+    .movieList() //
+    .then((movies) => {
+      setPopularMovies(movies[0]);
+      setHighRatingMovies(movies[1]);
+      setRecentMovies(movies[2]);
+      setLoading(false);
+    });
 }, [movieAPI]);
 ...
 ```
